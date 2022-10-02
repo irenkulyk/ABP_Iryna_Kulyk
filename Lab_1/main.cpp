@@ -10,7 +10,7 @@ int main() {
      case 1:
             cout << "x =" << endl;
             cin >>x;
-            cout << "y=" << endl ;
+            cout << "y =" << endl;
             cin >>y;
             break;
         case 2:
