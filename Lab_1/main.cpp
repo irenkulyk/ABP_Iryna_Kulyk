@@ -14,7 +14,7 @@ int main() {
             cin >>y;
             break;
         case 2:
-            if (x >= -1 && x <= 1 && y >= -1 && y <= 1 && ! (x > 0 && y < 0))
+            if (x >= -1 && x <= 1 && y >= -1 && y <= 1 &&!(x < 0 && y < 0))
                 cout << "This point falls into the area";
 
         case 3: exit(0);
@@ -24,7 +24,7 @@ int main() {
 
     cout << "Enter y:  \n";
     cin >> y;
-    if (x >= -1 && x <= 1 && y >= -1 && y <= 1)
+    if (x >= -1 && x <= 1 && y >= -1 && y <= 1  &&!(x < 0 && y < 0))
         cout << "This point falls into the area";
     else
         cout << "The point doesn't fall into the area";
