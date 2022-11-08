@@ -4,22 +4,31 @@ using namespace std;
 
 
 int main() {
-    int x[9][9], i, j, n = 9, m = 9;
+
+    int arraySize;
+
+    cout << "Enter array size :" << endl;
+    cin >> arraySize;
+    int *arrayOne = new int(arraySize);
+    int s[9][9];
+    int size[81];
+    srand(time(0));
+    int  i, j, n = 9, m = 9;
     cout << "\n";
     for (i = 0; i < n; i++)
         for(j = 0; j < m; j++)
-            x[i][j] = rand() % 50;
+            s[i][j] = rand() % 50;
     for (i = 0; i < n; i++){
         for(j = 0; j< n; j++)
-            cout << x[i][j] << " ";
+            cout << s[i][j] << " ";
         cout << "\n";
     }
     for (i = 0; i < n; i++) {
         for(j = 0; j < n; j++) {
             if(i != j){
-                x[i][j] = x[j][i];
+                s[i][j] = s[j][i];
             }
-            cout << setw(5) << x[i][j];
+            cout << setw(5) << s[i][j];
         }
         cout << endl;
     }
