@@ -23,5 +23,6 @@ int main() {
             cout <<b[i][j] << " ";
         cout << "\n";
 
-return 0;
+
+    return 0;
 }
