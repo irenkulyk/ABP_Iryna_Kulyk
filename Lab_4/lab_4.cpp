@@ -23,7 +23,6 @@ int main() {
             cout <<b[i][j] << " ";
         cout << "\n";
     }
-
     void masSum(int array[9][9], int mas[9]) {
     int Sum;
         for (int i = 0; i < n; i++) {		// зовнішній цикл по рядкам
@@ -37,6 +36,7 @@ int main() {
     }
     return 0;
 }
+
 
 
 

@@ -1,10 +1,11 @@
 #include <iostream>
 #include <iomanip>
- using namespace std;
+using namespace std;
 
 int main() {
     char spс1[5], spс2[5], spс3[5];
     char wei1[5], wei2[5], wei3[5];
+
     unsigned short par1, par2, par3;
     float siz1, siz2, siz3;
 

@@ -20,7 +20,7 @@ int main(){
               priorElement = cellValue;
          }
          // array
-         for(int i = 0; i < arraySize; i++){
+         for(int i = 0; i < arraySize; i++) {
              cout << *(arrayOne + i) << ' ';
          }
          cout << endl << counter;
