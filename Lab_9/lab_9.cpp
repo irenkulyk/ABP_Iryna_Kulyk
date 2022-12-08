@@ -4,8 +4,8 @@
 #include <vector>
 using namespace std;
 
-string s = "lab9";
-fstream file;
+string path = "lab9";
+fstream fout;
 bool mycomp_9(string a, string b){
     return a<b;
 }
@@ -14,73 +14,127 @@ vector <string> alphabaticallySort_main(vector<string> a) {
     return a;
 }
 vector <string> Spectralclass_main;
-void enterData(int size) {
-    file.open(s, ios_base::in | ios_base::out | ios_base::trunc);
-    string Spectralclass[size];
-    string Weight[size];
-    float Number[size];
-    int Part[size];
+void insize(){
+    int size;
+    cout << "Enter the number of rows: \t";
+    cin >> size;
 
-    for (int i = 0; i < size; i++) {
-        cout << "\n" << i + 1 << ". Enter: Spectralclass, Weight, Number, Part";
-        cin >> Spectralclass[i];
-        Spectralclass_main.push_back(Spectralclass[i]);
-        file << Spectralclass[i] << '\n';
-        cin >> Weight[i];
-        file << Weight[i] << '\n';
-        cin >> Number[i];
-        file << Number[i] << '\n';
-        cin >> Part[i];
-        file << Part[i] << '\n';
-    }
-    file.close();
 }
-    void showTab(int size){
-        string Spectralclass [size] ;
-        string Weight[size];
-        string Number[size];
-        string Part[size];
-        file.open(s, ios_base::in | ios_base::out);
-        cout << " -----------------------------------------------------------------------------\n ";
-        cout << "|  Approximate number of stars of different spectral classes in Galaxy      |\n ";
-        cout << "-----------------------------------------------------------------------------\n ";
-        cout << "|      Spectral class      |    Weight        |     Part    |     Number    |\n ";
-        cout << "-----------------------------------------------------------------------------\n ";
-        for(int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++){
-                getline(file, Spectralclass[j], '\n');
-                getline(file, Weight[j], '\n');
-                getline(file, Number[j], '\n');
-                getline(file, Part[j], '\n');
-                if (Spectralclass_main[i] == Spectralclass[j] ) {
-                    Spectralclass[j].resize(25);
-                    Weight[j].resize(16);
-                    Number[j].resize(11);
-                    Part[j].resize(13);
-                    cout << "| " << Spectralclass[j] << " | " << Weight[j] << " | " << Number[j] << " |" << fixed << setprecision(5) <<stod(Part[j]) << " |\n";
+void initf(string s){
+    fout.open(s, ios_base::in | ios_base::out | ios_base::trunc);
+}
+void commit(){
+    fout.close();
+}
+void initff(string s){
+    fout.open(s, ios_base::in | ios_base::out);
+}
+void f_add(){
+    string Spectralclass;
+    string Weight;
+    string Number;
+    string Part;
+    cout << ". Enter: Spectralclass, Weight, Number, Part";
+    cin >> Spectralclass; Spectralclass_main.push_back(Spectralclass);
+    fout << Spectralclass << '\n';
+    cin >> Weight;
+    fout << Weight << '\n';
+    cin >> Number;
+    fout << Number << '\n';
+    cin >> Part;
+    fout << Part << '\n';
+}
+void f_add_all(int size_main){
+    for (int i = 0; i < size_main; i++){
+        f_add();
+    }
 
-                }
+}
+void fdel_item(){
+    string cache;
+    for(int del = 0; del < 5; del++){
+        getline(fout, cache,'\n');
+    }
+}
+void f_show(int i, int size_main){
+    initff(path);
+    string Spectralclass;
+    string Weight;
+    string Number;
+    string Part;
+    for(int j = 1; j < 1; j++){
+        fdel_item();
+    }
+    getline(fout,Spectralclass,'\n');
+    getline(fout,Weight,'\n');
+    getline(fout,Number,'\n');
+    getline(fout,Part,'\n');
+    Spectralclass.resize(25);
+    Weight.resize(16);
+    cout << "| " << Spectralclass << " | " << Weight << " | \t\t " << setw(11) << Number << " | " << setw(13) << Part << " | \n";
+    for (int j = i; j <= size_main; j++){
+        fdel_item();
+    }
+    commit();
+}
+void fshow_all(int size_main){
+    cout << " -----------------------------------------------------------------------------\n ";
+    cout << "|  Approximate number of stars of different spectral classes in Galaxy      |\n ";
+    cout << "-----------------------------------------------------------------------------\n ";
+    cout << "|      Spectral class      |    Weight        |     Part    |     Number    |\n ";
+    cout << "-----------------------------------------------------------------------------\n ";
+ for(int j = 1; j <= size_main; j++){
+     f_show(j, size_main);
+ }
+    cout << " ----------------------------------------------------------------------------\n ";
+    cout << "|               Note: data not shown for classes: B, A, G, K                |\n ";
+    cout << "-----------------------------------------------------------------------------\n ";
 
+}
+void algorithm(int size_main) {
+    string Spectralclass[size_main];
+    string Weight[size_main];
+    string Number[size_main];
+    string Part[size_main];
+    string Spectralclass_D[size_main];
+    string Weight_D[size_main];
+    string Number_D[size_main];
+    string Part_D[size_main];
+    for (int i = 0; i < size_main; i++) {
+        initff(path);
+        for (j = 0; j < size_main; j++) {
+            getline(fout, Spectralclass[j], '\n');
+            getline(fout, Weight[j], '\n');
+            getline(fout, Number[j], '\n');
+            getline(fout, Part[j], '\n');
+            if (Spectralclass_main[i] == Spectralclass_main[j]) {
+                Spectralclass[i] = Spectralclass[j];
+                Weight[i] = Weight[j];
+                Number[i] = Weight[j];
+                Part[i] = Part[j];
             }
-
         }
-        cout << " ----------------------------------------------------------------------------\n ";
-        cout << "|               Note: data not shown for classes: B, A, G, K                |\n ";
-        cout << "-----------------------------------------------------------------------------\n ";
-
+        commit();
+    }
+    initf(path);
+    for (int j = 0; j < size_main; j++) {
+        fout << Spectralclass_D << '\n';
+        fout << Weight_D << '\n';
+        fout << Number_D << '\n';
+        fout << Part_D << '\n';
 
     }
-    int main(){
-    string path = "lab9";
-    ofstream file;
-    file.open(path);
-    if (!file.is_open()){
-        cout << " Error opening the file" << endl;
-    }
-
-
+    commit();
 }
-
+int main(){
+    int size =  insize();
+    initf(path);
+    commit();
+    Spectralclass_main = alphabaticallySort_main(Spectralclass_main);
+    algorithm(size);
+    commit();
+    fshow_all(size);
+}
 
 
 
