@@ -36,7 +36,7 @@ public:
         }
         for (int i = 0; i < s_column; i++){
             for( int j = 0; j < s_line; j++){
-                arr[i][j] = rand()%0;
+                arr[i][j] = rand()%10;
             }
         }
     }
